@@ -10,11 +10,9 @@ export const CreateSaleRepository = async (data: Sale) => {
       data: {
         nomeProduto: data.nomeProduto,
         quantidadeProduto: Number(data.quantidadeProduto),
-        metodoPagamento: data.metodoPagamento,
-        statusPagamento: data.statusPagamento,
         precoVenda: Number(data.precoVenda),
         precoCusto: Number(data.precoCusto),
-        data: new Date(),
+
       },
     });
     return venda;

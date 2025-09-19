@@ -38,17 +38,8 @@ export const GetSalesDataRepository = async () => {
         precoVenda: true,
         precoCusto: true,
       },
-      where: {
-        data: {
-          gte: inicioDia,
-          lte: fimDia,
-        },
-      },
+      where: {},
     });
-
-    const totalValorSalesDia = dia._sum.precoVenda || 0;
-    const totalValorCustoDia = dia._sum.precoCusto || 0;
-    const lucroDoDia = totalValorSalesDia - totalValorCustoDia;
 
     const totalVendas = await prisma.sale.count();
 
@@ -56,9 +47,7 @@ export const GetSalesDataRepository = async () => {
       totalValorSales,
       totalValorCusto,
       lucroTotal,
-      totalValorSalesDia,
       totalVendas,
-      lucroDoDia,
     };
   } catch (erro) {
     throw new Error("Erro ao buscar lucro total e do dias");
