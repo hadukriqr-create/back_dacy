@@ -61,7 +61,7 @@ export const GetSalesDataRepository = async () => {
       lucroDoDia,
     };
   } catch (erro) {
-    throw new Error("Erro ao buscar lucro total e do dia");
+    throw new Error("Erro ao buscar lucro total e do dias");
   } finally {
     prisma.$disconnect();
   }
