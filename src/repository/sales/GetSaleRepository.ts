@@ -25,30 +25,10 @@ export const GetSaleRepository = async (
       };
     }
 
-    let orderBy: any = { createdAt: "desc" };
-
-    switch (order) {
-      case "Mais antigos":
-        orderBy = { data: "asc" };
-        break;
-      case "Maior preço":
-        orderBy = { precoVenda: "desc" };
-        break;
-      case "Menor preço":
-        orderBy = { precoVenda: "asc" };
-        break;
-      case "Ordem alfabética":
-        orderBy = { nomeProduto: "asc" };
-        break;
-      default:
-        orderBy = { data: "desc" };
-    }
-
     const sales = await prisma.sale.findMany({
       skip,
       take: Number(limit),
       where,
-      orderBy,
     });
 
     const totalCount = await prisma.sale.count({ where });
